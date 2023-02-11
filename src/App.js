@@ -85,9 +85,21 @@ class App extends Component {
     browserList: initialHistoryList,
   }
 
+  onSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  onDeleteHistory = id => {
+    const {browserList} = this.state
+    const updatedHistoryList = browserList.filter(
+      eachHistory => eachHistory.id !== id,
+    )
+
+    this.setState({browserList: updatedHistoryList})
+  }
+
   render() {
     const {searchInput, browserList} = this.state
-
     const filteredDataList = browserList.filter(eachData =>
       eachData.title.toLowerCase().includes(searchInput.toLowerCase()),
     )
@@ -108,6 +120,7 @@ class App extends Component {
               />
             </div>
             <input
+              onChange={this.onSearchInput}
               placeholder="Search History"
               type="search"
               className="custom-input"
@@ -115,11 +128,19 @@ class App extends Component {
           </div>
         </div>
         <div className="bg-container-browser">
-          <ul className="browse-list-container">
-            {filteredDataList.map(eachData => (
-              <Browser details={eachData} key={eachData.id} />
-            ))}
-          </ul>
+          {filteredDataList.length === 0 ? (
+            <p className="no-history">There is no history to show</p>
+          ) : (
+            <ul className="history-container">
+              {filteredDataList.map(eachHistory => (
+                <Browser
+                  key={eachHistory.id}
+                  details={eachHistory}
+                  onDeleteHistory={this.onDeleteHistory}
+                />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     )
