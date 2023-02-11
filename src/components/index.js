@@ -3,32 +3,34 @@ import './index.css'
 
 class Browser extends Component {
   render() {
-    const {details} = this.props
-    const {title, timeAccessed, logoUrl, domainUrl} = details
+    const {details, onDeleteHistory} = this.props
+    const {id, title, timeAccessed, logoUrl, domainUrl} = details
+    const onDeleteItem = () => {
+      onDeleteHistory(id)
+    }
 
     return (
       <li className="list-item">
-        <p className="time">{timeAccessed}</p>
-
-        <div className="domain-delete">
-          <div className="domain-details">
-            <img src={logoUrl} className="logo" alt={title} />
-            <div className="label-title">
-              <h1 id="forTitle" className="title">
-                {title}
-              </h1>
-              <label className="domain" htmlFor="forTitle">
-                {domainUrl}
-              </label>
-            </div>
+        <div className="domain-details">
+          <p className="time">{timeAccessed}</p>
+          <img src={logoUrl} className="logo" alt="domain logo" />
+          <div className="label-title">
+            <p className="title">{title}</p>
+            <p className="domain">{domainUrl}</p>
           </div>
-
+        </div>
+        <button
+          type="button"
+          className="custom-button"
+          onClick={() => onDeleteItem(id)}
+          data-testid="delete"
+        >
           <img
             src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
             alt="delete"
             className="delete-logo"
           />
-        </div>
+        </button>
       </li>
     )
   }
