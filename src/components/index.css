@@ -1,22 +1,24 @@
 .logo {
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
   height: 36px;
 }
 .delete-logo {
   height: 20px;
 }
+.custom-button {
+  background-color: transparent;
+  border-width: 0;
+}
 .time {
-  margin-bottom: 0px;
+  color: #475569;
+  font-weight: 600;
   margin-left: 6px;
-  font-size: 10px;
+  font-size: 16px;
+  margin-right: 26px;
 }
 .list-item {
   display: flex;
+  justify-content: space-between;
   padding: 10px;
-  justify-content: flex-start;
-  align-items: center;
 
   align-items: center;
 }
@@ -27,48 +29,28 @@
 }
 
 .title {
-  margin-left: 0;
+  font-weight: bold;
+  color: #475569;
+  margin-bottom: 0;
+  margin-top: 0;
   font-size: 16px;
   margin-left: 10px;
 }
-.domain-delete {
-  width: 400px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.domain {
+  color: #64748b;
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 12px;
+  margin-bottom: 0;
+  margin-left: 10px;
 }
 
-@media (max-width: 767px) {
-  .list-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .title {
-    margin-left: 0px;
-    margin-bottom: 0px;
-  }
-}
 @media (min-width: 768px) {
-  .domain-delete {
-    width: 700px;
-  }
   .label-title {
-    text-align: left;
     display: flex;
+    justify-content: center;
     align-items: center;
   }
-  .title {
-    width: 200px;
-    font-size: 16px;
-    margin-left: 4px;
-    margin-right: 10px;
-  }
-  .time {
-    font-size: 16px;
-    margin-top: 0;
-
-    width: 100px;
-  }
+  
 }
+
